@@ -1,0 +1,12 @@
+namespace:
+
+prometheus:
+  subscription:
+    channel: beta
+    installPlanApproval: Automatic
+    name: rhods-prometheus-operator
+    source: redhat-operators
+    sourceNamespace: openshift-marketplace
+    argocd:
+      enabled: true
+      syncwave: "-1"

@@ -1,0 +1,14 @@
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: prometheus-operator
+  namespace: {{ .Values.namespace }}
+  annotations:
+    {{- include "prometheus-subscription.argocd-syncwave" . | nindent 4 }}
+spec:
+  channel: {{ .Values.prometheus.subscription.channel }}
+  installPlanApproval: {{ .Values.prometheus.subscription.installPlanApproval }}
+  name: {{ .Values.prometheus.subscription.name }}
+  source: {{ .Values.prometheus.subscription.source }}
+  sourceNamespace: {{ .Values.prometheus.subscription.sourceNamespace }}
