@@ -21,8 +21,6 @@ spec:
           - Describe
           - DescribeConfigs
         resource:
-          name: ''
-          patternType: literal
           type: cluster
       - operations:
           - Read
