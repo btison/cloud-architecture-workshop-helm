@@ -1,5 +1,11 @@
 namespace:
 
+kafka:
+  name: kafka
+  authentication:
+    saslMechanism: SCRAM-SHA-512
+  authorization: simple
+
 prometheus:
   subscription:
     channel: beta
