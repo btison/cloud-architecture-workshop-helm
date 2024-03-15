@@ -30,6 +30,7 @@ spec:
       tls: true
       {{- include "kafka-broker.authentication" . | nindent 6 }}
     config:
+      allow.everyone.if.no.acl.found: 'true'
       auto.create.topics.enable: {{ .Values.kafka.config.autoCreateTopics }}
       offsets.topic.replication.factor: {{ .Values.kafka.config.offsetsTopicReplicationFactor }}
       transaction.state.log.min.isr: {{ .Values.kafka.config.transactionStateLogMinIsr }}
@@ -41,12 +42,24 @@ spec:
       type: ephemeral
     resources:
       {{- toYaml .Values.kafka.resources | nindent 6 }}
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          key: kafka-metrics-config.yml
+          name: {{ include "kafka-broker.name" . }}-metrics
   zookeeper:
     replicas: {{ .Values.kafka.zookeeper.replicas }}
     storage:
       type: ephemeral
     resources:
       {{- toYaml .Values.kafka.zookeeper.resources | nindent 6 }}
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          key: zookeeper-metrics-config.yml
+          name: {{ include "kafka-broker.name" . }}-metrics
   entityOperator:
     topicOperator:
       resources:
