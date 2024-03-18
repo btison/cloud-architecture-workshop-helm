@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "streams-console.labels" . | nindent 4 }}
     strimzi.io/cluster: {{ .Values.kafka.name }}
-  name: console-kafka-user
+  name: {{ include "streams-console.name" . }}-kafka-user
   {{- if .Values.namespace }}
   namespace: {{ .Values.namespace }}
   {{- end }}

@@ -16,3 +16,5 @@ prometheus:
     argocd:
       enabled: true
       syncwave: "-1"
+
+user: user

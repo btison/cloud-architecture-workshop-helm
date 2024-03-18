@@ -3,7 +3,9 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: prometheus-operator
+  {{- if .Values.namespace }}
   namespace: {{ .Values.namespace }}
+  {{- end }}
   annotations:
     {{- include "prometheus-subscription.argocd-syncwave" . | nindent 4 }}
 spec:
