@@ -1,3 +1,4 @@
+{{- if eq .Values.scope.namespace true -}}
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
@@ -14,3 +15,4 @@ spec:
   name: {{ .Values.prometheus.subscription.name }}
   source: {{ .Values.prometheus.subscription.source }}
   sourceNamespace: {{ .Values.prometheus.subscription.sourceNamespace }}
+{{- end }}

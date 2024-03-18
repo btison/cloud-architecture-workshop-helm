@@ -1,4 +1,6 @@
 ---
+{{- if eq .Values.scope.namespace true -}}
+---
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
@@ -25,3 +27,4 @@ spec:
     name: {{ include "streams-console.name" . }}-scrape-configs
   scrapeInterval: 30s
   replicas: 1
+{{- end }}

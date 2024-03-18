@@ -1,3 +1,4 @@
+{{- if eq .Values.scope.namespace true -}}
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
@@ -52,3 +53,4 @@ spec:
         operator: In
         values:
           - Kafka
+{{- end }}
