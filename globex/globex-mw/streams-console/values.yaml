@@ -7,11 +7,11 @@ image:
   api:
     repository: quay.io/eyefloaters/console-api
     pullPolicy: IfNotPresent
-    tag: 0.0.31
+    tag: 0.0.32
   ui:
     repository: quay.io/eyefloaters/ui
     pullPolicy: IfNotPresent
-    tag: 0.0.31
+    tag: 0.0.32
 
 podSecurityContext: 
   runAsNonRoot: true
