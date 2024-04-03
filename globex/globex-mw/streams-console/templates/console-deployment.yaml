@@ -81,7 +81,9 @@ spec:
               value: "http://prometheus-operated.{{ .Values.namespace }}.svc.cluster.local:9090"
               {{- else }}
               value: 'http://prometheus-operated.{{ .Release.Namespace }}.svc.cluster.local:9090'
-              {{- end }}             
+              {{- end }}
+            - name: LOG_LEVEL
+              value: {{ .Values.console.logLevel }}      
           resources:
             {{- toYaml .Values.resources.ui | nindent 12 }}         
           volumeMounts:

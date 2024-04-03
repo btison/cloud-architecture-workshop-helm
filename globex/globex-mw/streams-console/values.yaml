@@ -70,6 +70,7 @@ prometheus:
 console:
   nextAuthSecret:
   sessionSecret:
+  logLevel: error
 
 user: user
 
