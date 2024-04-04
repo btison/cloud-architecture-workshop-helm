@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: obsidiandynamics/kafdrop
+  repository: quay.io/cloud-architecture-workshop/obsidiandynamics-kafdrop
   pullPolicy: IfNotPresent
   tag: "latest"
 
