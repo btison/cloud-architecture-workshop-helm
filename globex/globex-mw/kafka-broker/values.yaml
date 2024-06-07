@@ -2,7 +2,7 @@ nameOverride: "kafka"
 
 kafka:
   enabled: true
-  version: 3.6.0
+  version: 3.7.0
   cluster:
     replicas: 2
   zookeeper:
@@ -21,7 +21,7 @@ kafka:
     transactionStateLogReplicationFactor: 2
     transactionStateLogMinIsr: 2
     minInsyncReplicas: 1
-    interBrokerProtocolVersion: '3.6'
+    interBrokerProtocolVersion: '3.7'
   entityOperator:
     topicOperator:
       resources:
