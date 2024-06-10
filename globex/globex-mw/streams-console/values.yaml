@@ -5,13 +5,13 @@ fullnameOverride: ""
 
 image:
   api:
-    repository: quay.io/eyefloaters/console-api
+    repository: registry.redhat.io/amq-streams/console-api-rhel9
     pullPolicy: IfNotPresent
-    tag: 0.0.32
+    tag: 2.7.0
   ui:
-    repository: quay.io/eyefloaters/ui
+    repository: registry.redhat.io/amq-streams/console-ui-rhel9
     pullPolicy: IfNotPresent
-    tag: 0.0.32
+    tag: 2.7.0
 
 podSecurityContext: 
   runAsNonRoot: true
