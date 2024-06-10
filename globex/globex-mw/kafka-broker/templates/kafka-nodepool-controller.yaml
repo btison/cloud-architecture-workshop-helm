@@ -1,0 +1,18 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  name: {{ include "kafka-broker.name" . }}-controller
+  labels:
+    strimzi.io/cluster: {{ include "kafka-broker.name" . }}
+spec:
+  replicas: {{ .Values.kafka.controller.replicas }}
+  roles:
+    - controller
+  resources:
+    {{- toYaml .Values.kafka.controller.resources | nindent 4 }}
+  storage:
+    type: jbod
+    volumes:
+      - id: 0
+        type: ephemeral
+        kraftMetadata: shared
