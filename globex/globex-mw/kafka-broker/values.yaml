@@ -22,7 +22,6 @@ kafka:
     transactionStateLogReplicationFactor: 2
     transactionStateLogMinIsr: 2
     minInsyncReplicas: 1
-    interBrokerProtocolVersion: '3.7'
   entityOperator:
     topicOperator:
       resources:

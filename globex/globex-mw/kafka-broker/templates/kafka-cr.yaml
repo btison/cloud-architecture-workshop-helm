@@ -39,7 +39,6 @@ spec:
       transaction.state.log.replication.factor: {{ .Values.kafka.config.transactionStateLogReplicationFactor }}
       default.replication.factor: {{ .Values.kafka.config.defaultReplicationFactor }}
       min.insync.replicas: {{ .Values.kafka.config.minInsyncReplicas }}
-      inter.broker.protocol.version: '{{ .Values.kafka.config.interBrokerProtocolVersion }}'
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
