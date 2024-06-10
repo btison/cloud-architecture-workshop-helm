@@ -18,4 +18,3 @@ spec:
     volumes:
       - id: 0
         type: ephemeral
-        kraftMetadata: shared
