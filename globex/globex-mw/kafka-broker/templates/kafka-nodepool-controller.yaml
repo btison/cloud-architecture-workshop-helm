@@ -2,6 +2,9 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
   name: {{ include "kafka-broker.name" . }}-controller
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}
   labels:
     strimzi.io/cluster: {{ include "kafka-broker.name" . }}
 spec:
