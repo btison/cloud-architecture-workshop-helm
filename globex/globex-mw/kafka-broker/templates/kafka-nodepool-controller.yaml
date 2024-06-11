@@ -7,6 +7,7 @@ metadata:
   {{- end }}
   labels:
     strimzi.io/cluster: {{ include "kafka-broker.name" . }}
+    {{- include "kafka-broker.argocd-syncwave" . | nindent 4 }}
 spec:
   replicas: {{ .Values.kafka.controller.replicas }}
   roles:
