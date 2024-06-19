@@ -4,7 +4,7 @@ kafka:
   enabled: true
   version: 3.7.0
   cluster:
-    replicas: 2
+    replicas: 3
   zookeeper:
     replicas: 3
     resources:
