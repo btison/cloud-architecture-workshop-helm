@@ -10,7 +10,7 @@ metadata:
     {{- include "kafka-broker.labels" . | nindent 4 }}
   annotations:
     strimzi.io/node-pools: enabled
-    strimzi.io/kraft: disabled
+    strimzi.io/kraft: migration
     {{- include "kafka-broker.argocd-syncwave" . | nindent 4 }}
 spec:
   kafka:
@@ -46,11 +46,11 @@ spec:
           key: kafka-metrics-config.yml
           name: {{ include "kafka-broker.name" . }}-metrics
   zookeeper:
-    replicas: {{ .Values.kafka.zookeeper.replicas }}
+    replicas: {{ .Values.kafka.controller.replicas }}
     storage:
       type: ephemeral
     resources:
-      {{- toYaml .Values.kafka.zookeeper.resources | nindent 6 }}
+      {{- toYaml .Values.kafka.controller.resources | nindent 6 }}
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
