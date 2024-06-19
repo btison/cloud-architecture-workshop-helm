@@ -9,10 +9,11 @@ metadata:
   labels:
     {{- include "kafka-broker.labels" . | nindent 4 }}
   annotations:
+    strimzi.io/node-pools: enabled
+    strimzi.io/kraft: disabled
     {{- include "kafka-broker.argocd-syncwave" . | nindent 4 }}
 spec:
   kafka:
-    replicas: {{ .Values.kafka.cluster.replicas }}
     version: {{ .Values.kafka.version }}
     {{- if eq .Values.authorization "simple" }}
     authorization:
@@ -38,10 +39,6 @@ spec:
       default.replication.factor: {{ .Values.kafka.config.defaultReplicationFactor }}
       min.insync.replicas: {{ .Values.kafka.config.minInsyncReplicas }}
       inter.broker.protocol.version: '{{ .Values.kafka.config.interBrokerProtocolVersion }}'
-    storage:
-      type: ephemeral
-    resources:
-      {{- toYaml .Values.kafka.resources | nindent 6 }}
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:

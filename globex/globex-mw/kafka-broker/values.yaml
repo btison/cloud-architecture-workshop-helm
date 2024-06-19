@@ -3,7 +3,7 @@ nameOverride: "kafka"
 kafka:
   enabled: true
   version: 3.7.0
-  cluster:
+  broker:
     replicas: 3
   zookeeper:
     replicas: 3
