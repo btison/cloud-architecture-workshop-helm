@@ -67,4 +67,5 @@ spec:
     userOperator:
       resources:
         {{- toYaml .Values.kafka.entityOperator.userOperator.resources | nindent 8 }}
+  cruiseControl: {}
 {{- end }}
