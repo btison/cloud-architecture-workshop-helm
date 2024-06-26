@@ -15,12 +15,8 @@ kafka:
         cpu: 100m
         memory: 200M
     storage:
-      type: jbod
-      volumes:
-        - id: 0
-          type: persistent-claim
-          size: 10Gi
-          deleteClaim: true
+      type: persistent-claim
+      size: 5Gi
   config:
     autoCreateTopics: false
     defaultReplicationFactor: 2
