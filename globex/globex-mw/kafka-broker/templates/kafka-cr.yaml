@@ -10,7 +10,7 @@ metadata:
     {{- include "kafka-broker.labels" . | nindent 4 }}
   annotations:
     strimzi.io/node-pools: enabled
-    strimzi.io/kraft: disabled
+    strimzi.io/kraft: migration
     {{- include "kafka-broker.argocd-syncwave" . | nindent 4 }}
 spec:
   kafka:
