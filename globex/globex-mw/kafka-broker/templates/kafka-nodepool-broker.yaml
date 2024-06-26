@@ -14,7 +14,7 @@ spec:
   roles:
     - broker
   resources:
-    {{- toYaml .Values.kafka.resources | nindent 4 }}
+    {{- toYaml .Values.kafka.broker.resources | nindent 4 }}
   storage:
-    {{- toYaml .Values.kafka.storage | nindent 4 }}
+    {{- toYaml .Values.kafka.broker.storage | nindent 4 }}
 
