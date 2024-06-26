@@ -14,6 +14,13 @@ kafka:
       requests:
         cpu: 100m
         memory: 200M
+    storage:
+      type: jbod
+      volumes:
+        - id: 0
+          type: persistent-claim
+          size: 10Gi
+          deleteClaim: true
   config:
     autoCreateTopics: false
     defaultReplicationFactor: 2
@@ -46,6 +53,13 @@ kafka:
     requests:
       cpu: 300m
       memory: 500M
+  storage:
+    type: jbod
+    volumes:
+      - id: 0
+        type: persistent-claim
+        size: 20Gi
+        deleteClaim: true
 
 bootstrapServer: 
 

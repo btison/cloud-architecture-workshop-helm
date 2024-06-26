@@ -39,7 +39,7 @@ spec:
       min.insync.replicas: {{ .Values.kafka.config.minInsyncReplicas }}
       inter.broker.protocol.version: '{{ .Values.kafka.config.interBrokerProtocolVersion }}'
     storage:
-      type: ephemeral
+      {{- toYaml .Values.kafka.storage | nindent 6 }}
     resources:
       {{- toYaml .Values.kafka.resources | nindent 6 }}
     metricsConfig:
@@ -51,7 +51,7 @@ spec:
   zookeeper:
     replicas: {{ .Values.kafka.zookeeper.replicas }}
     storage:
-      type: ephemeral
+      {{- toYaml .Values.kafka.zookeeper.storage | nindent 6 }}
     resources:
       {{- toYaml .Values.kafka.zookeeper.resources | nindent 6 }}
     metricsConfig:
