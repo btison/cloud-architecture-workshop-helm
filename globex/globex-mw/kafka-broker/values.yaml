@@ -5,6 +5,22 @@ kafka:
   version: 3.7.0
   broker:
     replicas: 3
+  controller:
+    replicas: 3
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 100m
+        memory: 200M
+    storage:
+      type: jbod
+      volumes:
+        - id: 0
+          type: persistent-claim
+          size: 5Gi
+          deleteClaim: true
   zookeeper:
     replicas: 3
     resources:
@@ -17,6 +33,7 @@ kafka:
     storage:
       type: persistent-claim
       size: 5Gi
+      deleteClaim: true
   config:
     autoCreateTopics: false
     defaultReplicationFactor: 2
