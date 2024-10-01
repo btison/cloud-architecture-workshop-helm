@@ -50,6 +50,9 @@ service:
   portName: postgresql
   port: 5432
   containerPort: 5432
+  external:
+    enabled: false
+    name: 
 
 serviceAccount:
   create: true

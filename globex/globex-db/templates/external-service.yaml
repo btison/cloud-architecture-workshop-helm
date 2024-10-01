@@ -1,0 +1,16 @@
+{{- if and (not .Values.db.deploy) .Values.service.external.enabled -}}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "globex-db.name" . }}
+  labels:
+    {{- include "globex-db.labels" . | nindent 4 }}
+  annotations:
+    {{- include "globex-db.argocd-syncwave" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "globex-db.selectorLabels" . | nindent 4 }}
+  type: ExternalName
+  sessionAffinity: None
+  externalName: {{ .Values.service.external.name }}
+{{- end }}
