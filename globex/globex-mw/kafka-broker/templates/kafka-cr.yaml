@@ -9,11 +9,13 @@ metadata:
   labels:
     {{- include "kafka-broker.labels" . | nindent 4 }}
   annotations:
+    strimzi.io/node-pools: enabled
+    strimzi.io/kraft: enabled
     {{- include "kafka-broker.argocd-syncwave" . | nindent 4 }}
 spec:
   kafka:
-    replicas: {{ .Values.kafka.cluster.replicas }}
     version: {{ .Values.kafka.version }}
+    metadataVersion: {{ .Values.kafka.metadataVersion }}
     {{- if eq .Values.authorization "simple" }}
     authorization:
       type: simple
@@ -37,28 +39,11 @@ spec:
       transaction.state.log.replication.factor: {{ .Values.kafka.config.transactionStateLogReplicationFactor }}
       default.replication.factor: {{ .Values.kafka.config.defaultReplicationFactor }}
       min.insync.replicas: {{ .Values.kafka.config.minInsyncReplicas }}
-      inter.broker.protocol.version: '{{ .Values.kafka.config.interBrokerProtocolVersion }}'
-    storage:
-      type: ephemeral
-    resources:
-      {{- toYaml .Values.kafka.resources | nindent 6 }}
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
         configMapKeyRef:
           key: kafka-metrics-config.yml
-          name: {{ include "kafka-broker.name" . }}-metrics
-  zookeeper:
-    replicas: {{ .Values.kafka.zookeeper.replicas }}
-    storage:
-      type: ephemeral
-    resources:
-      {{- toYaml .Values.kafka.zookeeper.resources | nindent 6 }}
-    metricsConfig:
-      type: jmxPrometheusExporter
-      valueFrom:
-        configMapKeyRef:
-          key: zookeeper-metrics-config.yml
           name: {{ include "kafka-broker.name" . }}-metrics
   entityOperator:
     topicOperator:

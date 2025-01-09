@@ -3,9 +3,11 @@ nameOverride: "kafka"
 kafka:
   enabled: true
   version: 3.8.0
-  cluster:
-    replicas: 2
-  zookeeper:
+  metadataVersion: 3.8-IV0
+  broker:
+    replicas: 3
+  controller:
+    enabled: false
     replicas: 3
     resources:
       limits:
@@ -16,12 +18,11 @@ kafka:
         memory: 200M
   config:
     autoCreateTopics: false
-    defaultReplicationFactor: 2
-    offsetsTopicReplicationFactor: 2
-    transactionStateLogReplicationFactor: 2
+    defaultReplicationFactor: 3
+    offsetsTopicReplicationFactor: 3
+    transactionStateLogReplicationFactor: 3
     transactionStateLogMinIsr: 2
-    minInsyncReplicas: 1
-    interBrokerProtocolVersion: '3.8'
+    minInsyncReplicas: 2
   entityOperator:
     topicOperator:
       resources:
