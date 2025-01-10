@@ -1,4 +1,3 @@
-{{- if eq .Values.scope.namespace true -}}
 {{- if eq .Values.kafka.authentication.saslMechanism "SCRAM-SHA-512" -}}
 ---
 apiVersion: kafka.strimzi.io/v1beta2
@@ -39,5 +38,4 @@ spec:
           patternType: literal
           type: group
   {{- end }}
-{{- end }}
 {{- end }}

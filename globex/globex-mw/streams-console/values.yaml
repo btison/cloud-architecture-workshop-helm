@@ -1,78 +1,14 @@
-replicaCount: 1
-
 nameOverride: ""
 fullnameOverride: ""
-
-image:
-  api:
-    repository: registry.redhat.io/amq-streams/console-api-rhel9
-    pullPolicy: IfNotPresent
-    tag: 2.7.0
-  ui:
-    repository: registry.redhat.io/amq-streams/console-ui-rhel9
-    pullPolicy: IfNotPresent
-    tag: 2.7.0
-
-podSecurityContext: 
-  runAsNonRoot: true
-  seccompProfile:
-    type: RuntimeDefault
-
-securityContext:
-  allowPrivilegeEscalation: false
-  capabilities:
-    drop:
-      - ALL
-
-serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
-
-service:
-  type: ClusterIP
-  port: 8080
-  containerPort: 3000
-  portName: http-ui
-
-route:
-  host:
-  tlsEnabled: true
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
-
-resources: 
-  api: {}
 
 namespace:
 subdomain:
 
 kafka:
   name: kafka
-  bootstrapServer: 
   authentication:
     saslMechanism: SCRAM-SHA-512
     securityProtocol: SASL_PLAINTEXT
   authorization: simple
 
-prometheus:
-  subscription:
-    channel: beta
-    installPlanApproval: Automatic
-    name: prometheus
-    source: community-operators
-    sourceNamespace: openshift-marketplace
-    argocd:
-      enabled: true
-      syncwave: "-1"
-
-console:
-  nextAuthSecret:
-  sessionSecret:
-  logLevel: error
-
 user: user
-
-scope:
-  namespace: true
